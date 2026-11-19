@@ -1,0 +1,1381 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bhargavi Tours &amp; Travels | Hyderabad – Pilgrimage, Srisailam &amp; City Tours</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+      :root {
+        --navy-950: #071529;
+        --navy-900: #0b1f3a;
+        --navy-800: #122d54;
+        --navy-700: #1b4175;
+        --gold-500: #f4b400;
+        --gold-400: #ffd15c;
+        --gold-600: #d99b00;
+        --sky-500: #2ea3dd;
+        --sky-600: #1b88bf;
+        --sky-100: #e6f6fd;
+        --whatsapp: #22c55e;
+        --whatsapp-dark: #16a34a;
+        --instagram: linear-gradient(135deg, #f58529 0%, #dd2a7b 50%, #8134af 100%);
+        --forest-dark: #102a1f;
+        --white: #ffffff;
+        --bg-light: #f8fafc;
+        --bg-tinted: #f1f5f9;
+        --text-main: #0f172a;
+        --text-muted: #475569;
+        --border-light: #e2e8f0;
+        --shadow-sm: 0 6px 18px rgba(11, 31, 58, 0.06);
+        --shadow-md: 0 12px 30px rgba(11, 31, 58, 0.1);
+        --shadow-lg: 0 20px 44px rgba(11, 31, 58, 0.16);
+        --radius-md: 14px;
+        --radius-lg: 20px;
+      }
+
+      *, *::before, *::after { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+        color: var(--text-main);
+        background-color: var(--white);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+      img { display: block; max-width: 100%; }
+      a { text-decoration: none; color: inherit; }
+      button { font-family: inherit; cursor: pointer; }
+      h1, h2, h3, h4 { margin: 0; line-height: 1.2; }
+      .container { width: min(1240px, 92%); margin: 0 auto; }
+      .app-shell { min-height: 100vh; display: flex; flex-direction: column; }
+      .main-content { flex: 1; }
+
+      .scroll-anchor {
+        scroll-margin-top: 112px;
+      }
+
+      /* HEADER & NAV */
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: var(--white);
+        box-shadow: 0 4px 20px rgba(11, 31, 58, 0.08);
+      }
+      .top-utility-bar {
+        background: var(--navy-900);
+        color: #e2e8f0;
+        font-size: 0.82rem;
+        padding: 7px 0;
+      }
+      .top-utility-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .utility-links { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+      .utility-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: var(--gold-400);
+        font-weight: 600;
+      }
+      .utility-whatsapp { color: #86efac; }
+      .utility-instagram { color: #f9a8d4; }
+      .main-navbar { background: var(--white); border-bottom: 1px solid var(--border-light); }
+      .navbar-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 12px 0;
+      }
+
+      /* WEB PAGE TITLE NAME (ENLARGED MODERN FONT, NO LOGO) */
+      .brand-wordmark {
+        display: inline-flex;
+        flex-direction: column;
+        cursor: pointer;
+        line-height: 1.08;
+      }
+      .brand-title {
+        font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+        font-weight: 800;
+        font-size: 2.05rem;
+        letter-spacing: 0.03em;
+        color: var(--navy-900);
+      }
+      .brand-subtitle {
+        font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+        font-size: 0.92rem;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        color: var(--gold-600);
+        margin-top: 2px;
+      }
+      .site-footer .brand-title { color: var(--white); font-size: 1.75rem; }
+      .site-footer .brand-subtitle { color: var(--gold-400); font-size: 0.86rem; }
+
+      .nav-links-desktop {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        margin: 0;
+        padding: 0;
+      }
+      .nav-link-anchor {
+        display: inline-block;
+        padding: 9px 14px;
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--navy-900);
+        border-radius: 10px;
+        transition: color 0.2s ease, background-color 0.2s ease;
+      }
+      .nav-link-anchor:hover, .nav-link-anchor.active {
+        color: var(--sky-600);
+        background: var(--sky-100);
+      }
+      .navbar-actions { display: flex; align-items: center; gap: 12px; }
+      .nav-book-now-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--sky-500);
+        color: var(--white);
+        padding: 11px 22px;
+        border-radius: 10px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        box-shadow: 0 6px 16px rgba(46, 163, 221, 0.35);
+        transition: transform 0.2s ease, background-color 0.2s ease;
+      }
+      .nav-book-now-btn:hover { background: var(--sky-600); transform: translateY(-2px); }
+      .mobile-menu-toggle {
+        display: none;
+        background: var(--bg-tinted);
+        border: 1px solid var(--border-light);
+        border-radius: 10px;
+        padding: 8px;
+        color: var(--navy-900);
+      }
+      .mobile-nav-drawer {
+        display: none;
+        background: var(--white);
+        border-top: 1px solid var(--border-light);
+        padding: 14px 4%;
+      }
+      .mobile-nav-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .mobile-nav-anchor {
+        display: block;
+        width: 100%;
+        padding: 12px 14px;
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--navy-900);
+        border-radius: 10px;
+      }
+      .mobile-nav-anchor.active { background: var(--sky-100); color: var(--sky-600); }
+      .mobile-drawer-cta { margin-top: 12px; }
+
+      /* BUTTONS */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 12px 22px;
+        border-radius: 10px;
+        font-weight: 700;
+        font-size: 0.94rem;
+        border: 2px solid transparent;
+        transition: transform 0.2s ease, background-color 0.2s ease;
+      }
+      .btn:hover { transform: translateY(-2px); }
+      .btn-lg { padding: 14px 28px; font-size: 1rem; }
+      .btn-book-lg { padding: 13px 28px; font-size: 1rem; }
+      .full-width { width: 100%; }
+      .btn-sky { background: var(--sky-500); color: var(--white); box-shadow: 0 6px 16px rgba(46, 163, 221, 0.28); }
+      .btn-sky:hover { background: var(--sky-600); }
+      .btn-navy { background: var(--navy-900); color: var(--white); }
+      .btn-navy:hover { background: var(--navy-800); }
+      .btn-gold { background: var(--gold-500); color: var(--navy-950); box-shadow: 0 6px 18px rgba(244, 180, 0, 0.35); }
+      .btn-gold:hover { background: var(--gold-400); }
+      .btn-whatsapp { background: var(--whatsapp); color: var(--white); box-shadow: 0 6px 16px rgba(34, 197, 94, 0.28); }
+      .btn-whatsapp:hover { background: var(--whatsapp-dark); }
+      .btn-instagram { background: var(--instagram); color: var(--white); box-shadow: 0 6px 16px rgba(221, 42, 123, 0.3); }
+      .btn-pill-dark {
+        background: var(--forest-dark);
+        color: var(--white);
+        border-radius: 999px;
+        padding: 13px 26px;
+        letter-spacing: 0.03em;
+        box-shadow: var(--shadow-md);
+      }
+      .btn-pill-dark:hover { background: var(--navy-900); }
+      .btn-pill-whatsapp {
+        background: var(--whatsapp);
+        color: var(--white);
+        border-radius: 999px;
+        padding: 13px 26px;
+        letter-spacing: 0.03em;
+        box-shadow: 0 8px 22px rgba(34, 197, 94, 0.35);
+      }
+      .btn-pill-whatsapp:hover { background: var(--whatsapp-dark); }
+      .btn-outline-dark { background: transparent; color: var(--text-main); border-color: var(--border-light); }
+      .pill-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 11px 20px;
+        border-radius: 999px;
+        font-weight: 800;
+        font-size: 0.85rem;
+        letter-spacing: 0.04em;
+      }
+      .pill-call { background: var(--forest-dark); color: var(--white); border: 1px solid rgba(255,255,255,0.16); }
+      .pill-whatsapp { background: var(--whatsapp); color: var(--white); }
+      .pill-instagram { background: var(--instagram); color: var(--white); }
+
+      /* HERO & SECTION BANNERS */
+      .hero-section {
+        position: relative;
+        min-height: 600px;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        padding: 76px 0;
+        color: var(--white);
+      }
+      .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(110deg, rgba(7,21,41,0.92) 0%, rgba(11,31,58,0.8) 55%, rgba(11,31,58,0.52) 100%);
+      }
+      .hero-content { position: relative; z-index: 2; max-width: 820px; }
+      .hero-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(2.15rem, 4.8vw, 3.6rem);
+        font-weight: 800;
+        margin-bottom: 14px;
+        color: var(--white);
+      }
+      .hero-subtitle { font-size: clamp(1.1rem, 2.2vw, 1.38rem); font-weight: 700; color: var(--gold-400); margin: 0 0 16px; }
+      .hero-description { font-size: 1.05rem; color: #e2e8f0; max-width: 680px; margin: 0 0 28px; }
+      .hero-cta-group { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 34px; }
+      .hero-trust-strip {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(110px, 1fr));
+        gap: 14px;
+        max-width: 640px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: var(--radius-md);
+        padding: 16px 20px;
+      }
+      .trust-item { display: flex; flex-direction: column; }
+      .trust-item strong { font-size: 1.45rem; color: var(--gold-400); }
+      .trust-item span { font-size: 0.8rem; color: #e2e8f0; }
+
+      .section-hero-band {
+        position: relative;
+        min-height: 250px;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        padding: 54px 0;
+        color: var(--white);
+      }
+      .section-hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(95deg, rgba(7,21,41,0.92) 0%, rgba(11,31,58,0.74) 65%, rgba(11,31,58,0.55) 100%);
+      }
+      .section-hero-content { position: relative; z-index: 2; max-width: 820px; }
+      .section-hero-content h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 4vw, 2.8rem); margin-bottom: 12px; color: var(--white); }
+      .section-hero-content p { font-size: 1.04rem; color: #e2e8f0; margin: 0; }
+
+      .srisailam-band-hero, .contact-band-hero {
+        background: linear-gradient(135deg, var(--navy-950) 0%, var(--navy-800) 65%, var(--sky-600) 100%);
+        color: var(--white);
+        padding: 54px 0;
+        text-align: center;
+      }
+      .srisailam-band-hero h2, .contact-band-hero h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 4vw, 2.8rem); margin-bottom: 12px; color: var(--white); }
+      .srisailam-band-hero p, .contact-band-hero p { max-width: 760px; margin: 0 auto; color: #e2e8f0; font-size: 1.04rem; }
+
+      /* SECTIONS */
+      .section { padding: 68px 0; }
+      .section-light { background: var(--white); }
+      .section-tinted { background: var(--bg-tinted); }
+      .section-navy-band { background: linear-gradient(135deg, var(--navy-950) 0%, var(--navy-800) 100%); color: var(--white); }
+      .section-eyebrow {
+        display: inline-block;
+        font-size: 0.82rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--sky-600);
+        margin-bottom: 8px;
+      }
+      .section-eyebrow.gold { color: var(--gold-400); }
+      .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.75rem, 3.2vw, 2.45rem); color: var(--navy-900); margin-bottom: 12px; }
+      .section-title.white { color: var(--white); }
+      .section-subtitle { color: var(--text-muted); max-width: 680px; margin: 0 auto; font-size: 1.02rem; }
+      .section-subtitle.light { color: #cbd5e1; }
+      .section-header-center { text-align: center; margin-bottom: 40px; }
+      .body-text { color: var(--text-muted); margin: 0 0 16px; font-size: 1.01rem; }
+      .inline-btn-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px; }
+      .inline-phone-link { color: var(--sky-600); font-weight: 800; }
+
+      /* WELCOME & WA */
+      .welcome-split { display: grid; grid-template-columns: 1.25fr 1fr; gap: 36px; align-items: center; }
+      .section-lead { font-size: 1.08rem; font-weight: 600; color: var(--navy-800); margin: 0 0 14px; }
+      .instant-wa-card {
+        background: var(--forest-dark);
+        color: var(--white);
+        border-radius: var(--radius-lg);
+        padding: 28px;
+        border: 1px solid rgba(212, 175, 55, 0.35);
+        box-shadow: var(--shadow-lg);
+      }
+      .instant-wa-header { display: flex; align-items: center; gap: 10px; color: #e6c677; font-weight: 800; letter-spacing: 0.06em; font-size: 0.92rem; margin-bottom: 12px; }
+      .instant-wa-card p { margin: 0 0 20px; color: #e2e8f0; font-size: 0.98rem; }
+      .instant-wa-gold-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+        background: #d8b56c;
+        color: #0b1f16;
+        padding: 14px 20px;
+        border-radius: 999px;
+        font-weight: 800;
+        font-size: 0.95rem;
+      }
+      .instant-call-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
+
+      /* WHY & SERVICES */
+      .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+      .why-card {
+        background: var(--white);
+        border-radius: var(--radius-md);
+        padding: 26px;
+        box-shadow: var(--shadow-sm);
+        border-top: 4px solid var(--sky-500);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+      .why-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+      .why-icon-badge {
+        width: 54px; height: 54px; border-radius: 14px;
+        background: var(--sky-100); color: var(--navy-900);
+        display: grid; place-items: center; margin-bottom: 16px;
+      }
+      .why-card h3 { font-size: 1.15rem; color: var(--navy-900); margin-bottom: 8px; }
+      .why-card p { margin: 0; color: var(--text-muted); font-size: 0.95rem; }
+
+      .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+      .service-card {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: var(--radius-md);
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+      }
+      .service-badge {
+        align-self: flex-start;
+        background: var(--gold-500);
+        color: var(--navy-950);
+        font-size: 0.74rem;
+        font-weight: 800;
+        padding: 4px 10px;
+        border-radius: 999px;
+        margin-bottom: 14px;
+      }
+      .service-card h3 { color: var(--white); font-size: 1.15rem; margin-bottom: 10px; }
+      .service-card p { color: #cbd5e1; font-size: 0.94rem; margin: 0 0 18px; flex: 1; }
+      .service-link { display: inline-flex; align-items: center; gap: 7px; color: var(--gold-400); font-weight: 700; font-size: 0.88rem; }
+
+      /* ABOUT */
+      .about-who-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 44px; align-items: center; }
+      .emphasis-quote { font-weight: 800; color: var(--navy-900); font-size: 1.1rem; border-left: 4px solid var(--gold-500); padding-left: 14px; }
+      .about-visual-collage { position: relative; }
+      .collage-main-img { width: 100%; height: 380px; object-fit: cover; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); }
+      .about-pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 44px; }
+      .pillar-card { background: var(--bg-light); border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 26px; border-bottom: 4px solid var(--gold-500); }
+      .pillar-icon { width: 52px; height: 52px; border-radius: 14px; background: var(--navy-900); color: var(--gold-400); display: grid; place-items: center; margin-bottom: 14px; }
+      .pillar-card h3 { font-size: 1.2rem; color: var(--navy-900); margin-bottom: 8px; }
+      .pillar-card p { margin: 0; color: var(--text-muted); font-size: 0.95rem; }
+
+      /* SRISAILAM PACKAGES */
+      .package-split-layout { display: grid; grid-template-columns: 1.05fr 1fr; gap: 44px; align-items: center; }
+      .package-media-box { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); background: var(--navy-900); }
+      .package-media-box img { width: 100%; height: 430px; object-fit: cover; }
+      .package-tag { display: inline-block; background: var(--sky-100); color: var(--sky-600); font-weight: 800; font-size: 0.8rem; padding: 5px 12px; border-radius: 999px; margin-bottom: 12px; }
+      .package-tag.gold { background: rgba(244, 180, 0, 0.2); color: #996c00; }
+      .package-details-box h3 { font-family: 'Playfair Display', serif; font-size: clamp(1.85rem, 3.2vw, 2.5rem); color: var(--navy-900); margin-bottom: 12px; }
+      .package-intro { color: var(--text-muted); margin: 0 0 20px; }
+      .package-places-list { list-style: none; margin: 0 0 26px; padding: 0; display: grid; gap: 10px; }
+      .package-places-list.two-col-on-wide { grid-template-columns: repeat(2, 1fr); gap: 10px 18px; }
+      .package-places-list li { display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--navy-900); font-size: 0.98rem; }
+      .check-bullet { color: var(--sky-500); flex-shrink: 0; }
+      .package-cta-row { display: flex; flex-wrap: wrap; gap: 14px; }
+
+      /* FLEET & DESTINATION CARDS */
+      .cards-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+      .cards-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+      .fleet-card, .destination-card {
+        background: var(--white);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-sm);
+        border: 1px solid var(--border-light);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+      .fleet-card { text-align: center; }
+      .fleet-card:hover, .destination-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+      .fleet-card-image-wrap, .destination-card-media { position: relative; height: 215px; overflow: hidden; background: var(--navy-900); }
+      .fleet-card-image-wrap { background: #e2e8f0; }
+      .fleet-card-image-wrap img, .destination-card-media img { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform 0.35s ease; }
+      .fleet-card:hover img, .destination-card:hover img { transform: scale(1.06); }
+      .fleet-category-pill { position: absolute; top: 12px; right: 12px; background: var(--navy-900); color: var(--gold-400); font-size: 0.74rem; font-weight: 700; padding: 4px 10px; border-radius: 999px; }
+      .fleet-card-body { padding: 20px; display: flex; flex-direction: column; flex: 1; }
+      .fleet-card-title { font-size: 1.2rem; font-weight: 800; color: var(--navy-900); margin-bottom: 8px; }
+      .fleet-card-meta { display: inline-flex; align-items: center; justify-content: center; gap: 6px; color: var(--sky-600); font-weight: 700; font-size: 0.88rem; margin: 0 0 6px; }
+      .fleet-card-features { color: var(--text-muted); font-size: 0.88rem; margin: 0 0 18px; flex: 1; }
+      .destination-badge {
+        position: absolute; bottom: 10px; left: 10px;
+        background: rgba(11, 31, 58, 0.85); color: var(--gold-400);
+        font-size: 0.72rem; font-weight: 700; padding: 4px 10px; border-radius: 999px;
+        max-width: calc(100% - 20px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      }
+      .destination-card-body { padding: 18px; display: flex; flex-direction: column; flex: 1; }
+      .destination-card-title { font-size: 1.08rem; font-weight: 800; color: var(--navy-900); text-align: center; margin-bottom: 8px; }
+      .destination-card-subtitle { display: flex; align-items: center; justify-content: center; gap: 5px; color: var(--text-muted); font-size: 0.84rem; margin: 0 0 14px; text-align: center; }
+      .destination-card-desc { color: var(--text-muted); font-size: 0.88rem; margin: 0 0 16px; flex: 1; text-align: center; }
+      .destination-card-actions { display: flex; gap: 8px; margin-top: auto; }
+      .card-book-btn {
+        flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+        background: var(--sky-500); color: var(--white); font-weight: 700; font-size: 0.92rem;
+        padding: 11px 16px; border-radius: 8px;
+      }
+      .card-book-btn:hover { background: var(--sky-600); }
+      .card-wa-btn {
+        display: inline-flex; align-items: center; justify-content: center; width: 42px;
+        background: var(--whatsapp); color: var(--white); border-radius: 8px;
+      }
+      .card-wa-btn:hover { background: var(--whatsapp-dark); }
+      .srisailam-enquiry-strip {
+        margin-top: 48px; background: var(--navy-900); color: var(--white);
+        border-radius: var(--radius-lg); padding: 30px 32px;
+        display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+      }
+      .srisailam-enquiry-strip h3 { font-size: 1.4rem; color: var(--gold-400); margin-bottom: 6px; }
+      .srisailam-enquiry-strip p { margin: 0; color: #cbd5e1; }
+
+      /* CONTACT & FORM */
+      .contact-main-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 32px; align-items: start; }
+      .contact-details-column { display: flex; flex-direction: column; gap: 24px; }
+      .contact-detail-card { background: var(--white); border-radius: var(--radius-lg); padding: 28px; box-shadow: var(--shadow-sm); border: 1px solid var(--border-light); }
+      .contact-detail-card h3 { font-family: 'Playfair Display', serif; font-size: 1.75rem; color: var(--navy-900); margin-bottom: 6px; }
+      .contact-tagline { color: var(--sky-600); font-weight: 700; font-size: 0.95rem; margin: 0 0 20px; }
+      .contact-info-cards { display: flex; flex-direction: column; gap: 14px; margin-bottom: 22px; }
+      .info-tile { display: flex; gap: 14px; align-items: flex-start; background: var(--bg-light); padding: 14px 16px; border-radius: 12px; border: 1px solid var(--border-light); }
+      .info-tile svg { color: var(--sky-500); flex-shrink: 0; margin-top: 2px; }
+      .info-label { display: block; font-size: 0.78rem; font-weight: 800; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.05em; }
+      .info-value { font-size: 1.05rem; font-weight: 800; color: var(--navy-900); word-break: break-word; }
+      .info-address { margin: 2px 0 0; font-style: normal; color: var(--text-main); font-size: 0.94rem; }
+      .address-line { display: block; }
+      .contact-action-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .contact-action-full { grid-column: 1 / -1; }
+      .enquiry-form-card { background: var(--white); border-radius: var(--radius-lg); padding: 30px; box-shadow: var(--shadow-md); border: 1px solid var(--border-light); }
+      .enquiry-form-header { margin-bottom: 22px; }
+      .enquiry-form-header h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--navy-900); margin-bottom: 6px; }
+      .enquiry-form-header p { margin: 0; color: var(--text-muted); font-size: 0.95rem; }
+      .enquiry-form-grid { display: grid; gap: 16px; }
+      .form-row-two { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .form-field { display: flex; flex-direction: column; gap: 6px; }
+      .form-field label { font-size: 0.88rem; font-weight: 700; color: var(--navy-900); }
+      .required-star { color: #dc2626; }
+      .form-field input, .form-field textarea {
+        width: 100%; padding: 11px 14px; border: 1.5px solid #cbd5e1; border-radius: 10px;
+        font-family: inherit; font-size: 0.95rem; color: var(--text-main); background: var(--white);
+      }
+      .form-field input:focus, .form-field textarea:focus { outline: none; border-color: var(--sky-500); box-shadow: 0 0 0 3px rgba(46,163,221,0.18); }
+      .input-error { border-color: #dc2626 !important; }
+      .error-text { color: #dc2626; font-size: 0.8rem; font-weight: 600; }
+      .enquiry-success-box { background: #f0fdf4; border: 1px solid #86efac; border-radius: var(--radius-md); padding: 26px; text-align: center; }
+      .success-icon { color: var(--whatsapp-dark); margin: 0 auto 10px; }
+      .enquiry-success-box h4 { font-size: 1.3rem; color: var(--navy-900); margin-bottom: 8px; }
+      .enquiry-success-box p { color: var(--text-muted); margin: 0 0 20px; }
+      .success-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+
+      /* FOOTER & FLOATING */
+      .site-footer { background: var(--navy-950); color: #cbd5e1; padding-top: 56px; }
+      .footer-grid { display: grid; grid-template-columns: 1.35fr 0.85fr 0.9fr 1.2fr; gap: 32px; padding-bottom: 44px; }
+      .footer-about-text { margin: 14px 0 20px; font-size: 0.92rem; color: #cbd5e1; }
+      .footer-pill-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+      .footer-grid h4 { color: var(--gold-400); font-size: 1.05rem; margin-bottom: 16px; }
+      .footer-links-col ul, .footer-contact-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+      .footer-links-col a { color: #cbd5e1; font-size: 0.92rem; }
+      .footer-links-col a:hover { color: var(--gold-400); }
+      .footer-contact-list li { display: flex; gap: 10px; align-items: flex-start; font-size: 0.9rem; }
+      .footer-contact-list svg { color: var(--sky-500); flex-shrink: 0; margin-top: 3px; }
+      .footer-directions-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 14px; color: var(--gold-400); font-weight: 700; font-size: 0.88rem; }
+      .footer-bottom { border-top: 1px solid rgba(255,255,255,0.12); padding: 18px 0; font-size: 0.86rem; }
+      .footer-bottom-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+      .footer-bottom-inner p { margin: 0; }
+      .footer-bottom-inner a { color: var(--gold-400); font-weight: 700; }
+
+      .floating-cta-stack { position: fixed; right: 20px; bottom: 22px; z-index: 1200; display: flex; flex-direction: column; gap: 12px; }
+      .floating-btn {
+        display: inline-flex; align-items: center; gap: 8px; padding: 12px 18px;
+        border-radius: 999px; color: var(--white); font-weight: 800; font-size: 0.88rem;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25); transition: transform 0.2s ease;
+      }
+      .floating-btn:hover { transform: translateY(-3px) scale(1.03); }
+      .floating-instagram { background: var(--instagram); }
+      .floating-whatsapp { background: var(--whatsapp); }
+      .floating-call { background: var(--navy-900); border: 2px solid var(--gold-400); }
+
+      @media (max-width: 1100px) {
+        .brand-title { font-size: 1.7rem; }
+        .brand-subtitle { font-size: 0.82rem; }
+        .cards-grid-4 { grid-template-columns: repeat(3, 1fr); }
+        .services-grid { grid-template-columns: repeat(2, 1fr); }
+        .footer-grid { grid-template-columns: repeat(2, 1fr); }
+      }
+      @media (max-width: 920px) {
+        .nav-links-desktop, .nav-book-now-btn { display: none; }
+        .mobile-menu-toggle, .mobile-nav-drawer { display: block; }
+        .welcome-split, .about-who-grid, .package-split-layout, .contact-main-grid { grid-template-columns: 1fr; }
+        .package-split-reverse .package-media-box { order: -1; }
+        .why-grid, .cards-grid-3, .about-pillars-grid { grid-template-columns: repeat(2, 1fr); }
+      }
+      @media (max-width: 640px) {
+        .top-utility-bar { display: none; }
+        .brand-title { font-size: 1.48rem; }
+        .brand-subtitle { font-size: 0.74rem; }
+        .scroll-anchor { scroll-margin-top: 74px; }
+        .section { padding: 52px 0; }
+        .hero-trust-strip { grid-template-columns: repeat(2, 1fr); }
+        .cards-grid-4, .cards-grid-3, .why-grid, .services-grid, .about-pillars-grid, .form-row-two, .contact-action-grid, .package-places-list.two-col-on-wide, .footer-grid { grid-template-columns: 1fr; }
+        .package-media-box img { height: 280px; }
+        .collage-main-img { height: 270px; }
+        .floating-label { display: none; }
+        .floating-btn { padding: 14px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const { useEffect, useState } = React;
+
+      const Icon = ({ d, size = 18, className = '', children }) => (
+        <svg
+          width={size}
+          height={size}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className={className}
+        >
+          {children}
+          {d && (Array.isArray(d) ? d.map((path, i) => <path key={i} d={path} />) : <path d={d} />)}
+        </svg>
+      );
+
+      const Icons = {
+        Phone: (p) => <Icon {...p} d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />,
+        WhatsApp: (p) => <Icon {...p} d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />,
+        Instagram: (p) => (
+          <Icon {...p}>
+            <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+          </Icon>
+        ),
+        Calendar: (p) => <Icon {...p} d={["M8 2v4", "M16 2v4", "M3 10h18", "M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"]} />,
+        Menu: (p) => <Icon {...p} d={["M4 12h16", "M4 6h16", "M4 18h16"]} />,
+        X: (p) => <Icon {...p} d={["M18 6 6 18", "m6 6 12 12"]} />,
+        MapPin: (p) => <Icon {...p} d={["M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z", "M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"]} />,
+        Check: (p) => <Icon {...p} d={["M22 11.08V12a10 10 0 1 1-5.93-9.14", "m9 11 3 3L22 4"]} />,
+        Mail: (p) => <Icon {...p} d={["M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z", "m22 6-10 7L2 6"]} />,
+        Nav: (p) => <Icon {...p} d="m3 11 19-9-9 19-2-8-8-2z" />,
+        Arrow: (p) => <Icon {...p} d={["M5 12h14", "m12 5 7 7-7 7"]} />,
+        Users: (p) => <Icon {...p} d={["M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2", "M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0", "M22 21v-2a4 4 0 0 0-3-3.87", "M16 3.13a4 4 0 0 1 0 7.75"]} />,
+        Headphones: (p) => <Icon {...p} d={["M3 18v-6a9 9 0 0 1 18 0v6", "M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"]} />,
+        Compass: (p) => <Icon {...p} d={["M12 12m-10 0a10 10 0 1 0 20 0a10 10 0 1 0 -20 0", "m16.24 7.76-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12z"]} />,
+        Shield: (p) => <Icon {...p} d={["M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z", "m9 12 2 2 4-4"]} />,
+        Sparkles: (p) => <Icon {...p} d={["m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"]} />,
+      };
+
+      const CONTACT_INFO = {
+        brandName: 'Bhargavi Tours & Travels',
+        tagline: 'Your Journey, Our Priority – Explore More, Travel Safely and Comfortably!',
+        phoneDisplay: '7893999764',
+        phoneHref: 'tel:+917893999764',
+        whatsappHref: 'https://wa.me/917893999764',
+        instagramHandle: '@rajkumar_official_7498',
+        instagramHref: 'https://www.instagram.com/rajkumar_official_7498?hvrq=b3gxc3oybjR4Njcx',
+        email: 'bhargavitoursandtravels014@gmail.com',
+        emailHref: 'mailto:bhargavitoursandtravels014@gmail.com',
+        addressLines: [
+          'House No. 402, Street No. 4,',
+          'Balakrishna Nagar, Ramanthapur,',
+          'Uppal, Medchal-Malkajgiri District,',
+          'Telangana, India.',
+        ],
+        directionsHref:
+          'https://www.google.com/maps/dir/?api=1&destination=Balakrishna+Nagar+Ramanthapur+Uppal+Hyderabad+Telangana+India',
+      };
+
+      const HERO_IMAGES = {
+        homeHero: 'https://commons.wikimedia.org/wiki/Special:FilePath/N-TN-C192_Brihadeeswarar_Temple_at_Sunset.jpg?width=1600',
+        aboutBanner: 'https://commons.wikimedia.org/wiki/Special:FilePath/Hampi_virupaksha_temple_sunrise.jpg?width=1400',
+        hyderabadSkyline: 'https://commons.wikimedia.org/wiki/Special:FilePath/Hydskyline.jpg?width=1400',
+        srisailamOneDay: 'https://commons.wikimedia.org/wiki/Special:FilePath/2025_West_Gopuram_and_Bhramaramba_Devi_temple_view_in_Srisailam.jpg?width=1200',
+        srisailamTwoDay: 'https://commons.wikimedia.org/wiki/Special:FilePath/Boating_at_Nagarjuna_Sagar.jpg?width=1200',
+      };
+
+      const WHY_CHOOSE_US = [
+        { title: 'Comfortable Journeys', description: 'Well-maintained, air-conditioned sedans, SUVs, and tempo travellers for fatigue-free pilgrimage and leisure rides.' },
+        { title: 'Safe and Reliable Travel', description: 'Regularly inspected vehicles, GPS-assisted routing, and punctual pickups for complete peace of mind.' },
+        { title: 'Experienced Drivers', description: 'Courteous, verified chauffeurs well-versed in temple routes, ghat roads, and Hyderabad city landmarks.' },
+        { title: 'Family-Friendly Trips', description: 'Thoughtfully paced itineraries suitable for elders, children, and multi-generational family pilgrimages.' },
+        { title: 'Affordable Travel Services', description: 'Transparent pricing with no hidden charges—tailored options for every group size and budget.' },
+        { title: 'Easy Booking and Enquiry', description: 'Instant booking support via direct phone call or WhatsApp with quick confirmation and itinerary guidance.' },
+      ];
+
+      const TRAVEL_SERVICES = [
+        { title: 'Srisailam Special Packages', badge: 'Most Popular', description: 'Dedicated 1 Day and 2 Day Srisailam darshan and sightseeing packages from Hyderabad with door-to-door pickup.' },
+        { title: 'Temple & Jyotirlinga Pilgrimages', badge: 'Spiritual Tours', description: 'Customized devotional tours across Telangana, Andhra Pradesh, Maharashtra, Tamil Nadu, Kerala, MP, and Ayodhya.' },
+        { title: 'Hyderabad Local Sightseeing', badge: 'City Heritage', description: 'Full-day and half-day city packages covering Charminar, Golconda Fort, Ramoji Film City, and Hussain Sagar.' },
+        { title: 'Outstation & Family Vacations', badge: '24/7 Service', description: 'Flexible outstation cab rentals for weekend getaways, weddings, family functions, and airport transfers.' },
+      ];
+
+      const SRISAILAM_ONE_DAY_PLACES = [
+        'Mallikarjuna Swamy Temple',
+        'Bhramaramba Devi Temple',
+        'Sakshi Ganapathi Temple',
+        'Paladhara and Panchadhara',
+        'Hatakeshwar Temple',
+        'Paatala Ganga',
+        'Octopus View Point',
+        'Forest View Points (Srisailam Dam)',
+      ];
+
+      const SRISAILAM_TWO_DAY_PLACES = [
+        'Mallikarjuna Swamy Temple',
+        'Bhramaramba Devi Temple',
+        'Sakshi Ganapathi Temple',
+        'Paladhara and Panchadhara',
+        'Hatakeshwar Temple',
+        'Paatala Ganga',
+        'Octopus View Point',
+        'Srisailam Tiger Reserve',
+        'Srisailam Ropeway',
+        'Srisailam Boating',
+        'Akka Mahadevi Temple',
+        'Chenchu Lakshmi Museum',
+      ];
+
+      const FLEET_VEHICLES = [
+        { id: 'swift-dzire', name: 'Swift Dzire', category: 'Compact Sedan', seats: '4 Passengers + Driver', features: 'AC • Ideal for Couples & Small Families', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/MIAS_2025_-_All-new_Suzuki_Dzire_Hybrid_01.jpg?width=900' },
+        { id: 'toyota-etios', name: 'Toyota Etios', category: 'Comfort Sedan', seats: '4 Passengers + Driver', features: 'AC • Spacious Boot & Highway Comfort', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Toyota_Etios_(5989331111).jpg?width=900' },
+        { id: 'maruti-ertiga', name: 'Maruti Ertiga', category: 'Family MPV', seats: '6–7 Passengers + Driver', features: 'Dual AC • Great for Family Pilgrimages', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/2024_Suzuki_Ertiga_Cruise_(front_right).jpg?width=900' },
+        { id: 'tempo-traveller', name: 'Tempo Traveller', category: 'Group Coach', seats: '12–17 Passengers + Driver', features: 'Pushback Seats • Group & Temple Yatra', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Force_Traveller,_Leh-Manali_Highway.jpg?width=900' },
+        { id: 'innova-crysta', name: 'Innova Crysta', category: 'Premium MPV', seats: '6–7 Passengers + Driver', features: 'Luxury AC • Captain Seats & Smooth Ride', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Innova_Crysta_car_near_Janampeta.jpg?width=900' },
+        { id: 'toyota-innova', name: 'Toyota Innova', category: 'Executive MPV', seats: '7 Passengers + Driver', features: 'AC • Reliable Long-Distance Cruiser', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/2023_Toyota_Kijang_Innova_Zenix_2.0_Q_Hybrid_Modellista_(front).jpg?width=900' },
+      ];
+
+      const PILGRIMAGE_TEMPLES = [
+        { id: 1, name: 'Srisailam Mallikarjuna Swamy Temple', location: 'Srisailam, Andhra Pradesh', deity: 'Jyotirlinga & Shakti Peetha', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Night_view_of_Srisailam_Temple_South_Gopuram.jpg?width=900' },
+        { id: 2, name: 'Yadadri Temple', location: 'Yadagirigutta, Telangana', deity: 'Sri Lakshmi Narasimha Swamy', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Sri_Lakshminarasimha_Swamy_Temple_Yadagirigutta_Yadadri_Telangana_05.jpg?width=900' },
+        { id: 3, name: 'Vemulawada Temple', location: 'Rajanna Sircilla, Telangana', deity: 'Sri Raja Rajeshwara Swamy', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Sri_Raja_Rajeshwara_temple.jpg?width=900' },
+        { id: 4, name: 'Ramappa Temple', location: 'Palampet, Mulugu, Telangana', deity: 'UNESCO Heritage Shiva Temple', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Ramappa_Temple_8.jpg?width=900' },
+        { id: 5, name: 'Thousand Pillar Temple', location: 'Hanumakonda, Warangal, Telangana', deity: 'Kakatiya Architecture', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Thousand_pillar_temple_Hanamkonda.jpg?width=900' },
+        { id: 6, name: 'Bhadrachalam Temple', location: 'Bhadradri Kothagudem, Telangana', deity: 'Sri Sita Ramachandra Swamy', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Sri_sita_rama_temple_bhadrachalam_goupuram_view.jpg?width=900' },
+        { id: 7, name: 'Yaganti Temple', location: 'Nandyal District, Andhra Pradesh', deity: 'Sri Uma Maheswara Swamy', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Nandi_at_Yaganti_Temple_-Kurnool_-Andhra_Pradesh_-001.jpg?width=900' },
+        { id: 8, name: 'Tirupati Balaji Temple', location: 'Tirumala, Andhra Pradesh', deity: 'Sri Venkateswara Swamy', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Tirumala_Tirupati_Devasthanam.jpg?width=900' },
+        { id: 9, name: 'Arunachalam Temple', location: 'Tiruvannamalai, Tamil Nadu', deity: 'Annamalaiyar • Agni Lingam', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Thiruvannamalai,_Arunachalesvara_Temple,_Annamalaiyar_Temple,_India.jpg?width=900' },
+        { id: 10, name: 'Ganagapur Temple', location: 'Kalaburagi, Karnataka', deity: 'Sri Dattatreya Kshetra', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Sangam_Kshetra,_Ganagapura_(2024)_02.jpg?width=900' },
+        { id: 11, name: 'Tulja Bhavani Temple', location: 'Tuljapur, Maharashtra', deity: 'Shakti Peetha', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Tulja_Bhavani_Mandir,_Tuljapur.jpg?width=900' },
+        { id: 12, name: 'Akkalkot Temple', location: 'Akkalkot, Maharashtra', deity: 'Shri Swami Samarth Maharaj', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Shree_swami_samarth_Akkalkot.jpg?width=900' },
+        { id: 13, name: 'Pandharpur Vitthal Rukmini Temple', location: 'Pandharpur, Maharashtra', deity: 'Lord Vitthal & Rukmini', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Vitthal_rukmini_temple.jpg?width=900' },
+        { id: 14, name: 'Shirdi Sai Baba Temple', location: 'Shirdi, Maharashtra', deity: 'Shri Sai Baba Samadhi Mandir', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Sai_Temple_Shirdi_(tomb)_,2024.jpg?width=900' },
+        { id: 15, name: 'Bhimashankar Temple', location: 'Pune District, Maharashtra', deity: 'Sacred Jyotirlinga Shrine', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Temple_entry_gate.jpg?width=900' },
+        { id: 16, name: 'Trimbakeshwar Temple', location: 'Nashik, Maharashtra', deity: 'Sacred Jyotirlinga Shrine', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Trimbakeshwar_Shiva_Temple_Gopuram.jpg?width=900' },
+        { id: 17, name: 'Omkareshwar Temple, Madhya Pradesh', location: 'Khandwa, Madhya Pradesh', deity: 'Narmada Island Jyotirlinga', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Omkareswar_Jyotirlinga.jpg?width=900' },
+        { id: 18, name: 'Shri Mahakaleshwar Jyotirlinga Temple', location: 'Ujjain, Madhya Pradesh', deity: 'Dakshinamukhi Jyotirlinga', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Ujjain_Mahakal_Temple_05.jpg?width=900' },
+        { id: 19, name: 'Sabarimala Ayyappa Temple', location: 'Pathanamthitta, Kerala', deity: 'Lord Dharma Sastha', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Sabarimala_sannidhanam.jpg?width=900' },
+        { id: 20, name: 'Ayodhya Ram Mandir', location: 'Ayodhya, Uttar Pradesh', deity: 'Shri Ram Janmabhoomi Mandir', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Shri_Ram_Janambhoomi_Mandir,_Ayodhya_Dham.jpg?width=900' },
+      ];
+
+      const HYDERABAD_DESTINATIONS = [
+        { id: 1, name: 'Charminar', category: 'Historic Monument', description: 'Hyderabad’s iconic 1591 monument famous for its four grand arches, minarets, and vibrant Old City heritage.', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Charminar_of_Hyderabad_Telangana.jpg?width=900' },
+        { id: 2, name: 'Golconda Fort', category: 'Royal Citadel', description: 'Majestic Qutb Shahi hilltop fortress celebrated for acoustic engineering, royal palaces, and panoramic sunset views.', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Golconda_Fort_Hyderabad_315.jpg?width=900' },
+        { id: 3, name: 'Ramoji Film City', category: 'Theme & Film Studio', description: 'The world’s largest integrated film studio complex offering grand movie sets, live shows, gardens, and family rides.', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Ramoji_Film_City_(8).jpg?width=900' },
+        { id: 4, name: 'Hussain Sagar Lake', category: 'Scenic Lake', description: 'Historic heart-shaped lake connecting Hyderabad and Secunderabad with pleasant boat rides and breezy lakefronts.', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Buddha_in_Hussain_sagar.jpg?width=900' },
+        { id: 5, name: 'Buddha Statue', category: 'Iconic Landmark', description: 'Towering 18-metre monolithic statue of Gautama Buddha standing serenely on Gibraltar Rock in Hussain Sagar Lake.', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Buddha_madhu_pic_1.jpg?width=900' },
+        { id: 6, name: 'Birla Mandir', category: 'Hilltop Temple', description: 'Luminous white marble Venkateswara temple atop Naubath Pahad offering serene prayers and sweeping city views.', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Birla_Mandir_on_a_sunset.jpg?width=900' },
+        { id: 7, name: 'Salar Jung Museum', category: 'Art & Heritage Museum', description: 'One of India’s premier national museums housing rare sculptures, manuscripts, clocks, and global royal artifacts.', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Salar_Jung_Museum,_the_building_and_complex_in_Hyderabad_21.jpg?width=900' },
+        { id: 8, name: 'Chowmahalla Palace', category: 'Nizam Palace', description: 'Opulent palace complex of the Nizams featuring the grand Khilwat Mubarak Durbar Hall, courtyards, and vintage cars.', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Chowmahalla_Palace_-_Khilwat_Mubarak_-_Museum_22.jpg?width=900' },
+        { id: 9, name: 'Qutb Shahi Tombs', category: 'Heritage Precinct', description: 'Tranquil landscaped gardens housing intricately carved domed mausoleums of the seven Qutb Shahi rulers.', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Qutub_Shahi_Tombs_illuminated.jpg?width=900' },
+        { id: 10, name: 'Mecca Masjid', category: 'Heritage Mosque', description: 'Monumental 17th-century granite mosque beside Charminar, built with bricks crafted from sacred soil of Mecca.', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Mecca_Masjid,_near_Charminar_Chawk,_in_Hyderabad,_Telengana_06.jpg?width=900' },
+        { id: 11, name: 'Laad Bazaar', category: 'Cultural Market', description: 'Centuries-old bustling market beside Charminar renowned for lac bangles, pearls, bridal attire, and perfumes.', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Laad_Bazaar_as_seen_from_charminar.jpg?width=900' },
+        { id: 12, name: 'Tank Bund', category: 'Lakeside Boulevard', description: 'Scenic waterfront promenade lined with heritage statues, evening lights, and refreshing views of Hussain Sagar.', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Long_Exposure_at_Tank_bunk_Buddha_statue.jpg?width=900' },
+        { id: 13, name: 'Necklace Road', category: 'Leisure Drive', description: 'Picturesque lakeside boulevard ideal for evening drives, waterfront dining, and strolling with family.', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Water_Front_,_Tank_bund,_Hyderabad.jpg?width=900' },
+        { id: 14, name: 'Lumbini Park', category: 'Urban Park', description: 'Popular urban lakeside park featuring musical fountain shows, boating jetties to Buddha Statue, and lush lawns.', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Buddha_Statue_Lumbini_Park.jpg?width=900' },
+        { id: 15, name: 'NTR Gardens', category: 'Recreation Park', description: 'Beautifully landscaped leisure garden near Hussain Sagar with shaded walkways, mini-train rides, and family zones.', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/NTR_garden._Hyderabad.jpg?width=900' },
+        { id: 16, name: 'Shilparamam', category: 'Arts & Crafts Village', description: 'Vibrant cultural village in Madhapur showcasing traditional Indian handicrafts, folk performances, and handlooms.', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Shilparamam_in_Hyderabad_10.jpg?width=900' },
+        { id: 17, name: 'Durgam Cheruvu', category: 'Cable Bridge & Lake', description: 'The Secret Lake near HITEC City featuring Hyderabad’s illuminated cable-stayed bridge and lakeside promenades.', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Cable_Bridge_view_from_Dr.B.R._Ambedkar_Open_University_Hyderabad_Telangana.jpg?width=900' },
+        { id: 18, name: 'Taramati Baradari', category: 'Historic Pavilion', description: '17th-century Qutb Shahi open-air pavilion perched on a hillock near Golconda, celebrated for heritage acoustics.', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Taramati_baradari.jpg?width=900' },
+        { id: 19, name: 'Statue of Equality', category: 'Spiritual Landmark', description: 'Grand 216-foot Panchaloha statue of Sri Ramanujacharya at Muchintal surrounded by 108 Divya Desam shrines.', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Statue_of_Sri_Ramanuja_named_as_statue_of_Equality_in_Telangana,_India_(3).jpg?width=900' },
+        { id: 20, name: 'Nehru Zoological Park', category: 'Wildlife Park', description: 'Expansive 380-acre zoological park near Mir Alam Tank featuring lion and tiger safaris, aviaries, and greenery.', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Nehru_Zoological_Park,_Hyderabad,_Telangana12.jpg?width=900' },
+      ];
+
+      /* TEXT-ONLY BRAND WORDMARK (NO LOGO) */
+      const BrandWordmark = ({ onClick }) => (
+        <a href="#home" className="brand-wordmark" onClick={onClick}>
+          <span className="brand-title">BHARGAVI</span>
+          <span className="brand-subtitle">TOURS &amp; TRAVELS</span>
+        </a>
+      );
+
+      const DestinationCard = ({ title, subtitle, description, badge, image }) => {
+        const waText = encodeURIComponent(`Hello Bhargavi Tours & Travels, I would like to book / enquire about a trip to ${title}.`);
+        return (
+          <article className="destination-card">
+            <div className="destination-card-media">
+              <img src={image} alt={title} loading="lazy" />
+              {badge && <span className="destination-badge">{badge}</span>}
+            </div>
+            <div className="destination-card-body">
+              <h3 className="destination-card-title">{title}</h3>
+              {subtitle && <p className="destination-card-subtitle"><Icons.MapPin size={14} /><span>{subtitle}</span></p>}
+              {description && <p className="destination-card-desc">{description}</p>}
+              <div className="destination-card-actions">
+                <a href={CONTACT_INFO.phoneHref} className="card-book-btn">
+                  <span>Book Now</span>
+                  <Icons.Headphones size={16} />
+                </a>
+                <a href={`${CONTACT_INFO.whatsappHref}?text=${waText}`} target="_blank" rel="noopener noreferrer" className="card-wa-btn" title="WhatsApp Enquiry">
+                  <Icons.WhatsApp size={17} />
+                </a>
+              </div>
+            </div>
+          </article>
+        );
+      };
+
+      const VehicleCard = ({ vehicle }) => (
+        <article className="fleet-card">
+          <div className="fleet-card-image-wrap">
+            <img src={vehicle.image} alt={vehicle.name} loading="lazy" />
+            <span className="fleet-category-pill">{vehicle.category}</span>
+          </div>
+          <div className="fleet-card-body">
+            <h3 className="fleet-card-title">{vehicle.name}</h3>
+            <p className="fleet-card-meta"><Icons.Users size={15} /><span>{vehicle.seats}</span></p>
+            <p className="fleet-card-features">{vehicle.features}</p>
+            <a href={CONTACT_INFO.phoneHref} className="card-book-btn">
+              <Icons.Phone size={15} />
+              <span>Book Now</span>
+            </a>
+          </div>
+        </article>
+      );
+
+      const EnquiryForm = () => {
+        const [values, setValues] = useState({ name: '', phone: '', destination: '', travelDate: '', passengers: '4', message: '' });
+        const [errors, setErrors] = useState({});
+        const [submitted, setSubmitted] = useState(null);
+
+        const validate = () => {
+          const e = {};
+          if (!values.name.trim() || values.name.trim().length < 2) e.name = 'Please enter your full name.';
+          if (values.phone.replace(/\D/g, '').length < 10) e.phone = 'Please enter a valid 10-digit mobile number.';
+          if (!values.destination.trim()) e.destination = 'Please enter your destination.';
+          if (!values.travelDate) e.travelDate = 'Please select your travel date.';
+          if (!values.passengers || Number(values.passengers) < 1) e.passengers = 'Please enter at least 1 passenger.';
+          setErrors(e);
+          return Object.keys(e).length === 0;
+        };
+
+        const handleSubmit = (ev) => {
+          ev.preventDefault();
+          if (validate()) setSubmitted(values);
+        };
+
+        const buildWaUrl = (d) =>
+          `${CONTACT_INFO.whatsappHref}?text=${encodeURIComponent(
+            `Hello Bhargavi Tours & Travels,\nName: ${d.name}\nPhone: ${d.phone}\nDestination: ${d.destination}\nTravel Date: ${d.travelDate}\nPassengers: ${d.passengers}${d.message ? `\nMessage: ${d.message}` : ''}`
+          )}`;
+
+        return (
+          <div className="enquiry-form-card">
+            <div className="enquiry-form-header">
+              <h3>Send Your Travel Enquiry</h3>
+              <p>Fill in your trip details below. Our Hyderabad coordinator will respond quickly with the best vehicle and package options.</p>
+            </div>
+            {submitted ? (
+              <div className="enquiry-success-box">
+                <Icons.Check size={40} className="success-icon" />
+                <h4>Thank You, {submitted.name}!</h4>
+                <p>Your enquiry for <strong>{submitted.destination}</strong> on <strong>{submitted.travelDate}</strong> ({submitted.passengers} passengers) is ready.</p>
+                <div className="success-actions">
+                  <a href={buildWaUrl(submitted)} target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp">
+                    <Icons.WhatsApp size={18} /><span>Confirm on WhatsApp</span>
+                  </a>
+                  <a href={CONTACT_INFO.phoneHref} className="btn btn-navy">
+                    <Icons.Phone size={18} /><span>Call {CONTACT_INFO.phoneDisplay}</span>
+                  </a>
+                  <button type="button" className="btn btn-outline-dark" onClick={() => setSubmitted(null)}>Submit Another</button>
+                </div>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} noValidate className="enquiry-form-grid">
+                <div className="form-field">
+                  <label>Customer Name <span className="required-star">*</span></label>
+                  <input type="text" placeholder="Enter your full name" value={values.name} onChange={(e) => setValues({ ...values, name: e.target.value })} className={errors.name ? 'input-error' : ''} />
+                  {errors.name && <span className="error-text">{errors.name}</span>}
+                </div>
+                <div className="form-field">
+                  <label>Phone Number <span className="required-star">*</span></label>
+                  <input type="tel" placeholder="e.g., 9876543210" value={values.phone} onChange={(e) => setValues({ ...values, phone: e.target.value })} className={errors.phone ? 'input-error' : ''} />
+                  {errors.phone && <span className="error-text">{errors.phone}</span>}
+                </div>
+                <div className="form-field">
+                  <label>Destination <span className="required-star">*</span></label>
+                  <input type="text" placeholder="e.g., Srisailam 2 Day Package, Tirupati, Hyderabad Tour" value={values.destination} onChange={(e) => setValues({ ...values, destination: e.target.value })} className={errors.destination ? 'input-error' : ''} />
+                  {errors.destination && <span className="error-text">{errors.destination}</span>}
+                </div>
+                <div className="form-row-two">
+                  <div className="form-field">
+                    <label>Travel Date <span className="required-star">*</span></label>
+                    <input type="date" value={values.travelDate} onChange={(e) => setValues({ ...values, travelDate: e.target.value })} className={errors.travelDate ? 'input-error' : ''} />
+                    {errors.travelDate && <span className="error-text">{errors.travelDate}</span>}
+                  </div>
+                  <div className="form-field">
+                    <label>Number of Passengers <span className="required-star">*</span></label>
+                    <input type="number" min="1" max="50" value={values.passengers} onChange={(e) => setValues({ ...values, passengers: e.target.value })} className={errors.passengers ? 'input-error' : ''} />
+                    {errors.passengers && <span className="error-text">{errors.passengers}</span>}
+                  </div>
+                </div>
+                <div className="form-field">
+                  <label>Message</label>
+                  <textarea rows="3" placeholder="Mention pickup location in Hyderabad & preferred vehicle..." value={values.message} onChange={(e) => setValues({ ...values, message: e.target.value })} />
+                </div>
+                <button type="submit" className="btn btn-gold btn-lg">Submit Enquiry</button>
+              </form>
+            )}
+          </div>
+        );
+      };
+
+      const NAV_ITEMS = [
+        { id: 'home', label: 'Home' },
+        { id: 'about', label: 'About Us' },
+        { id: 'srisailam', label: 'Srisailam' },
+        { id: 'other-services', label: 'Other Services' },
+        { id: 'contact', label: 'Contact Us' },
+      ];
+
+      function App() {
+        const [activeSection, setActiveSection] = useState('home');
+        const [mobileOpen, setMobileOpen] = useState(false);
+
+        useEffect(() => {
+          const sectionIds = NAV_ITEMS.map((item) => item.id);
+          const handleScroll = () => {
+            const scrollPosition = window.scrollY + 180;
+            let current = 'home';
+            for (const id of sectionIds) {
+              const el = document.getElementById(id);
+              if (el && el.offsetTop <= scrollPosition) {
+                current = id;
+              }
+            }
+            setActiveSection(current);
+          };
+
+          window.addEventListener('scroll', handleScroll, { passive: true });
+          return () => window.removeEventListener('scroll', handleScroll);
+        }, []);
+
+        const scrollToSection = (e, id) => {
+          if (e) e.preventDefault();
+          setMobileOpen(false);
+          const el = document.getElementById(id);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth' });
+            setActiveSection(id);
+          }
+        };
+
+        return (
+          <div className="app-shell">
+            <header className="site-header">
+              <div className="top-utility-bar">
+                <div className="container top-utility-inner">
+                  <span>Hyderabad, Telangana • Pilgrimage, Srisailam &amp; Sightseeing Tours</span>
+                  <div className="utility-links">
+                    <a href={CONTACT_INFO.phoneHref} className="utility-link"><Icons.Phone size={14} /><span>Call: +91 {CONTACT_INFO.phoneDisplay}</span></a>
+                    <a href={CONTACT_INFO.whatsappHref} target="_blank" rel="noopener noreferrer" className="utility-link utility-whatsapp">WhatsApp Enquiry</a>
+                    <a href={CONTACT_INFO.instagramHref} target="_blank" rel="noopener noreferrer" className="utility-link utility-instagram"><Icons.Instagram size={14} /><span>Instagram</span></a>
+                  </div>
+                </div>
+              </div>
+              <nav className="main-navbar" aria-label="Single Page Navigation">
+                <div className="container navbar-inner">
+                  <BrandWordmark onClick={(e) => scrollToSection(e, 'home')} />
+                  <ul className="nav-links-desktop">
+                    {NAV_ITEMS.map((item) => (
+                      <li key={item.id}>
+                        <a
+                          href={`#${item.id}`}
+                          onClick={(e) => scrollToSection(e, item.id)}
+                          className={`nav-link-anchor ${activeSection === item.id ? 'active' : ''}`}
+                        >
+                          {item.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="navbar-actions">
+                    <a href={CONTACT_INFO.phoneHref} className="nav-book-now-btn"><span>Book Now</span><Icons.Calendar size={17} /></a>
+                    <button type="button" className="mobile-menu-toggle" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Menu">
+                      {mobileOpen ? <Icons.X size={24} /> : <Icons.Menu size={24} />}
+                    </button>
+                  </div>
+                </div>
+                {mobileOpen && (
+                  <div className="mobile-nav-drawer">
+                    <ul className="mobile-nav-list">
+                      {NAV_ITEMS.map((item) => (
+                        <li key={item.id}>
+                          <a
+                            href={`#${item.id}`}
+                            onClick={(e) => scrollToSection(e, item.id)}
+                            className={`mobile-nav-anchor ${activeSection === item.id ? 'active' : ''}`}
+                          >
+                            {item.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="mobile-drawer-cta">
+                      <a href={CONTACT_INFO.phoneHref} className="btn btn-sky full-width"><Icons.Phone size={18} /><span>Book Now — {CONTACT_INFO.phoneDisplay}</span></a>
+                    </div>
+                  </div>
+                )}
+              </nav>
+            </header>
+
+            <main className="main-content">
+              {/* SECTION 1: HOME */}
+              <section id="home" className="scroll-anchor">
+                <div className="hero-section" style={{ backgroundImage: `url(${HERO_IMAGES.homeHero})` }}>
+                  <div className="hero-overlay" />
+                  <div className="container hero-content">
+                    <h1 className="hero-title">Welcome to Bhargavi Tours &amp; Travels</h1>
+                    <p className="hero-subtitle">Your Journey, Our Priority – Explore More, Travel Safely and Comfortably!</p>
+                    <p className="hero-description">Discover beautiful destinations, experience spiritual journeys, and enjoy comfortable travel with Bhargavi Tours &amp; Travels. We provide reliable transportation and memorable travel experiences for families, friends, and pilgrims.</p>
+                    <div className="hero-cta-group">
+                      <a href={CONTACT_INFO.phoneHref} className="btn btn-pill-dark"><Icons.Phone size={18} /><span>CALL NOW</span></a>
+                      <a href={CONTACT_INFO.whatsappHref} target="_blank" rel="noopener noreferrer" className="btn btn-pill-whatsapp"><Icons.WhatsApp size={18} /><span>WHATSAPP</span></a>
+                      <a href="#other-services" onClick={(e) => scrollToSection(e, 'other-services')} className="btn btn-gold"><Icons.Compass size={18} /><span>EXPLORE DESTINATIONS</span></a>
+                    </div>
+                    <div className="hero-trust-strip">
+                      <div className="trust-item"><strong>20+</strong><span>Sacred Temples</span></div>
+                      <div className="trust-item"><strong>20+</strong><span>Hyderabad Landmarks</span></div>
+                      <div className="trust-item"><strong>6</strong><span>AC Fleet Options</span></div>
+                      <div className="trust-item"><strong>24/7</strong><span>Call &amp; WhatsApp</span></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="section section-light">
+                  <div className="container welcome-split">
+                    <div>
+                      <span className="section-eyebrow">Hyderabad • Telangana • Pan-India Yatras</span>
+                      <h2 className="section-title">Welcome to Bhargavi Tours &amp; Travels</h2>
+                      <p className="section-lead">Based in Hyderabad, Telangana, Bhargavi Tours &amp; Travels brings together safe, well-kept vehicles, courteous drivers, and deeply curated pilgrimage and city sightseeing itineraries.</p>
+                      <p className="body-text">Whether you are booking a 1 Day or 2 Day Srisailam Mallikarjuna Swamy darshan trip, planning a multi-state Jyotirlinga pilgrimage, or touring Hyderabad’s palaces and monuments with family, every kilometer is designed around your comfort and devotion.</p>
+                      <div className="inline-btn-row">
+                        <a href="#srisailam" onClick={(e) => scrollToSection(e, 'srisailam')} className="btn btn-navy"><span>View Srisailam Packages</span><Icons.Arrow size={17} /></a>
+                        <a href={CONTACT_INFO.phoneHref} className="btn btn-sky"><Icons.Phone size={17} /><span>Call {CONTACT_INFO.phoneDisplay}</span></a>
+                      </div>
+                    </div>
+                    <div className="instant-wa-card">
+                      <div className="instant-wa-header"><Icons.WhatsApp size={20} /><span>INSTANT WHATSAPP ENQUIRY</span></div>
+                      <p>Chat with our pilgrimage coordinator directly on WhatsApp for instant vehicle availability, Srisailam darshan timings, and custom trip quotes:</p>
+                      <a href={CONTACT_INFO.whatsappHref} target="_blank" rel="noopener noreferrer" className="instant-wa-gold-btn">
+                        <Icons.WhatsApp size={18} /><span>WHATSAPP: +91 {CONTACT_INFO.phoneDisplay}</span>
+                      </a>
+                      <div className="instant-call-row">
+                        <a href={CONTACT_INFO.phoneHref} className="pill-btn pill-call"><Icons.Phone size={16} /><span>CALL NOW</span></a>
+                        <a href={CONTACT_INFO.whatsappHref} target="_blank" rel="noopener noreferrer" className="pill-btn pill-whatsapp"><Icons.WhatsApp size={16} /><span>WHATSAPP</span></a>
+                        <a href={CONTACT_INFO.instagramHref} target="_blank" rel="noopener noreferrer" className="pill-btn pill-instagram"><Icons.Instagram size={16} /><span>INSTAGRAM</span></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="section section-tinted">
+                  <div className="container">
+                    <div className="section-header-center">
+                      <span className="section-eyebrow">Travel With Confidence</span>
+                      <h2 className="section-title">Why Choose Us?</h2>
+                      <p className="section-subtitle">Every journey with Bhargavi Tours &amp; Travels is built on punctuality, safety, transparent fares, and warm hospitality.</p>
+                    </div>
+                    <div className="why-grid">
+                      {WHY_CHOOSE_US.map((item) => (
+                        <div key={item.title} className="why-card">
+                          <div className="why-icon-badge"><Icons.Shield size={24} /></div>
+                          <h3>{item.title}</h3>
+                          <p>{item.description}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="section section-navy-band">
+                  <div className="container">
+                    <div className="section-header-center">
+                      <span className="section-eyebrow gold">What We Offer</span>
+                      <h2 className="section-title white">Our Travel Services</h2>
+                      <p className="section-subtitle light">Complete end-to-end transport and curated tour packages from Hyderabad for pilgrims, families, and explorers.</p>
+                    </div>
+                    <div className="services-grid">
+                      {TRAVEL_SERVICES.map((s) => (
+                        <div key={s.title} className="service-card">
+                          <span className="service-badge">{s.badge}</span>
+                          <h3>{s.title}</h3>
+                          <p>{s.description}</p>
+                          <a href={CONTACT_INFO.phoneHref} className="service-link"><Icons.Phone size={15} /><span>Book via Call: {CONTACT_INFO.phoneDisplay}</span></a>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* SECTION 2: ABOUT US */}
+              <section id="about" className="scroll-anchor">
+                <div className="section-hero-band" style={{ backgroundImage: `url(${HERO_IMAGES.aboutBanner})` }}>
+                  <div className="section-hero-overlay" />
+                  <div className="container section-hero-content">
+                    <span className="section-eyebrow gold">Who We Are • Hyderabad, Telangana</span>
+                    <h2>About Bhargavi Tours &amp; Travels</h2>
+                    <p>Your Journey, Our Priority – Explore More, Travel Safely and Comfortably!</p>
+                  </div>
+                </div>
+
+                <div className="section section-light">
+                  <div className="container">
+                    <div className="about-who-grid">
+                      <div>
+                        <span className="section-eyebrow">Our Story &amp; Commitment</span>
+                        <h3 className="section-title">Trusted Travel &amp; Pilgrimage Partner in Hyderabad</h3>
+                        <p className="body-text">Bhargavi Tours &amp; Travels is a Hyderabad-based travel service dedicated to making every journey comfortable, safe, and memorable. We provide convenient transportation facilities for families, friends, pilgrims, and tourists.</p>
+                        <p className="body-text">Whether you are planning a spiritual pilgrimage, a family vacation, a local Hyderabad sightseeing trip, or an outstation journey, we are here to make your travel experience easy and enjoyable.</p>
+                        <p className="body-text">Our goal is to provide reliable transportation, comfortable vehicles, and friendly customer service.</p>
+                        <p className="body-text emphasis-quote">Travel with us and make every journey a beautiful memory!</p>
+                        <div className="inline-btn-row">
+                          <a href={CONTACT_INFO.phoneHref} className="btn btn-pill-dark"><Icons.Phone size={18} /><span>CALL NOW</span></a>
+                          <a href={CONTACT_INFO.whatsappHref} target="_blank" rel="noopener noreferrer" className="btn btn-pill-whatsapp"><Icons.WhatsApp size={18} /><span>WHATSAPP</span></a>
+                        </div>
+                      </div>
+                      <div className="about-visual-collage">
+                        <img src={HERO_IMAGES.hyderabadSkyline} alt="Hyderabad Cityscape" className="collage-main-img" loading="lazy" />
+                      </div>
+                    </div>
+
+                    <div className="about-pillars-grid">
+                      <div className="pillar-card"><div className="pillar-icon"><Icons.Compass size={26} /></div><h3>Our Mission</h3><p>To deliver dependable, punctual, and affordable travel services across Telangana and India—ensuring senior citizens, families, and devotees travel with dignity, comfort, and complete peace of mind.</p></div>
+                      <div className="pillar-card"><div className="pillar-icon"><Icons.Sparkles size={26} /></div><h3>Our Services</h3><p>We specialize in 1 Day &amp; 2 Day Srisailam temple packages, Jyotirlinga &amp; multi-state pilgrimage tours, Hyderabad local heritage sightseeing, airport transfers, and customized outstation cab rentals.</p></div>
+                      <div className="pillar-card"><div className="pillar-icon"><Icons.Shield size={26} /></div><h3>Why Travel With Us?</h3><p>Clean air-conditioned fleet (Swift Dzire, Etios, Ertiga, Innova, Innova Crysta, Tempo Traveller), experienced ghat-route drivers, transparent pricing, and 24/7 direct support on Call &amp; WhatsApp.</p></div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* SECTION 3: SRISAILAM, FLEET & 20 TEMPLES */}
+              <section id="srisailam" className="scroll-anchor">
+                <div className="srisailam-band-hero">
+                  <div className="container">
+                    <span className="section-eyebrow gold">Sacred Jyotirlinga &amp; Shakti Peetha Yatra</span>
+                    <h2>Srisailam Packages &amp; Pilgrimage Destinations</h2>
+                    <p>Experience the divine blessings of Sri Mallikarjuna Swamy and Bhramaramba Devi amidst the scenic Nallamala Hills, Krishna River boating, our vehicle fleet, and 20 revered Indian pilgrimage destinations.</p>
+                  </div>
+                </div>
+
+                <div className="section section-light">
+                  <div className="container package-split-layout">
+                    <div className="package-media-box"><img src={HERO_IMAGES.srisailamOneDay} alt="1 Day Srisailam Package" loading="lazy" /></div>
+                    <div className="package-details-box">
+                      <span className="package-tag">Express Pilgrimage</span>
+                      <h3>1 Day Srisailam Package</h3>
+                      <p className="package-intro">Ideal for families and devotees departing early morning from Hyderabad for same-day darshan and key Srisailam sightseeing spots.</p>
+                      <ul className="package-places-list">
+                        {SRISAILAM_ONE_DAY_PLACES.map((p) => <li key={p}><Icons.Check size={18} className="check-bullet" /><span>{p}</span></li>)}
+                      </ul>
+                      <div className="package-cta-row">
+                        <a href={CONTACT_INFO.phoneHref} className="btn btn-sky btn-book-lg"><Icons.Calendar size={18} /><span>Book Now</span></a>
+                        <a href={`${CONTACT_INFO.whatsappHref}?text=${encodeURIComponent('Hello Bhargavi Tours & Travels, I would like to book the 1 Day Srisailam Package.')}`} target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp"><Icons.WhatsApp size={18} /><span>WhatsApp Enquiry</span></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="section section-tinted">
+                  <div className="container package-split-layout package-split-reverse">
+                    <div className="package-details-box">
+                      <span className="package-tag gold">Complete Spiritual &amp; Nature Tour</span>
+                      <h3>2 Day Srisailam Package</h3>
+                      <p className="package-intro">A relaxed two-day pilgrimage covering sacred temples, Nallamala Tiger Reserve views, Paatala Ganga ropeway, Krishna River boating, and Akka Mahadevi Caves.</p>
+                      <ul className="package-places-list two-col-on-wide">
+                        {SRISAILAM_TWO_DAY_PLACES.map((p) => <li key={p}><Icons.Check size={18} className="check-bullet" /><span>{p}</span></li>)}
+                      </ul>
+                      <div className="package-cta-row">
+                        <a href={CONTACT_INFO.phoneHref} className="btn btn-sky btn-book-lg"><Icons.Calendar size={18} /><span>Book Now</span></a>
+                        <a href={`${CONTACT_INFO.whatsappHref}?text=${encodeURIComponent('Hello Bhargavi Tours & Travels, I would like to book the 2 Day Srisailam Package.')}`} target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp"><Icons.WhatsApp size={18} /><span>WhatsApp Enquiry</span></a>
+                      </div>
+                    </div>
+                    <div className="package-media-box"><img src={HERO_IMAGES.srisailamTwoDay} alt="2 Day Srisailam Boating" loading="lazy" /></div>
+                  </div>
+                </div>
+
+                <div className="section section-light">
+                  <div className="container">
+                    <div className="section-header-center">
+                      <span className="section-eyebrow">Comfortable Travel Options</span>
+                      <h2 className="section-title">Our Fleet Of Cars</h2>
+                      <p className="section-subtitle">Select the ideal vehicle for your Srisailam yatra, temple pilgrimage, or city tour. Call <a href={CONTACT_INFO.phoneHref} className="inline-phone-link">{CONTACT_INFO.phoneDisplay}</a> to book immediately.</p>
+                    </div>
+                    <div className="cards-grid-3">{FLEET_VEHICLES.map((v) => <VehicleCard key={v.id} vehicle={v} />)}</div>
+                  </div>
+                </div>
+
+                <div className="section section-tinted">
+                  <div className="container">
+                    <div className="section-header-center">
+                      <span className="section-eyebrow">Sacred Yatras Across India</span>
+                      <h2 className="section-title">Explore Famous Temples &amp; Pilgrimage Destinations</h2>
+                      <p className="section-subtitle">Click Book Now on any of the 20 sacred temples below to open the phone dialer with {CONTACT_INFO.phoneDisplay}.</p>
+                    </div>
+                    <div className="cards-grid-4">
+                      {PILGRIMAGE_TEMPLES.map((t) => <DestinationCard key={t.id} title={t.name} subtitle={t.location} badge={t.deity} image={t.image} />)}
+                    </div>
+                    <div className="srisailam-enquiry-strip">
+                      <div><h3>Need a Custom Multi-Temple Yatra Itinerary?</h3><p>Talk to our pilgrimage coordinator for customized routes, darshan timings, and group Tempo Traveller bookings.</p></div>
+                      <div className="inline-btn-row">
+                        <a href={CONTACT_INFO.phoneHref} className="btn btn-pill-dark"><Icons.Phone size={18} /><span>CALL NOW: {CONTACT_INFO.phoneDisplay}</span></a>
+                        <a href={CONTACT_INFO.whatsappHref} target="_blank" rel="noopener noreferrer" className="btn btn-pill-whatsapp"><Icons.WhatsApp size={18} /><span>WHATSAPP ENQUIRY</span></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* SECTION 4: OTHER SERVICES (EXPLORE HYDERABAD – 20 PLACES) */}
+              <section id="other-services" className="scroll-anchor">
+                <div className="section-hero-band" style={{ backgroundImage: `url(${HERO_IMAGES.hyderabadSkyline})` }}>
+                  <div className="section-hero-overlay" />
+                  <div className="container section-hero-content">
+                    <span className="section-eyebrow gold">Other Services • City Sightseeing &amp; Local Tours</span>
+                    <h2>Explore Hyderabad – Famous Tourist Destinations</h2>
+                    <p>Discover the beauty, history, culture, and attractions of Hyderabad with Bhargavi Tours &amp; Travels. Explore the city&apos;s most popular tourist destinations with comfortable transportation.</p>
+                  </div>
+                </div>
+
+                <div className="section section-light">
+                  <div className="container">
+                    <div className="section-header-center">
+                      <span className="section-eyebrow">20 Iconic City Attractions</span>
+                      <h2 className="section-title">Hyderabad Local Sightseeing Packages</h2>
+                      <p className="section-subtitle">Click Book Now on any destination below to call {CONTACT_INFO.phoneDisplay} directly for cab booking.</p>
+                    </div>
+                    <div className="cards-grid-4">
+                      {HYDERABAD_DESTINATIONS.map((p) => <DestinationCard key={p.id} title={p.name} description={p.description} badge={p.category} image={p.image} />)}
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* SECTION 5: CONTACT US */}
+              <section id="contact" className="scroll-anchor">
+                <div className="contact-band-hero">
+                  <div className="container">
+                    <span className="section-eyebrow gold">24/7 Customer Support</span>
+                    <h2>Get In Touch With Us</h2>
+                    <p>Reach Bhargavi Tours &amp; Travels by phone, WhatsApp, Instagram, email, or visit our Ramanthapur, Hyderabad office.</p>
+                  </div>
+                </div>
+
+                <div className="section section-tinted">
+                  <div className="container contact-main-grid">
+                    <div className="contact-details-column">
+                      <div className="contact-detail-card">
+                        <h3>Bhargavi Tours &amp; Travels</h3>
+                        <p className="contact-tagline">{CONTACT_INFO.tagline}</p>
+                        <div className="contact-info-cards">
+                          <div className="info-tile"><Icons.Phone size={22} /><div><span className="info-label">Phone Number</span><a href={CONTACT_INFO.phoneHref} className="info-value">{CONTACT_INFO.phoneDisplay}</a></div></div>
+                          <div className="info-tile"><Icons.Mail size={22} /><div><span className="info-label">Email</span><a href={CONTACT_INFO.emailHref} className="info-value">{CONTACT_INFO.email}</a></div></div>
+                          <div className="info-tile">
+                            <Icons.Instagram size={22} />
+                            <div>
+                              <span className="info-label">Instagram</span>
+                              <a href={CONTACT_INFO.instagramHref} target="_blank" rel="noopener noreferrer" className="info-value">
+                                {CONTACT_INFO.instagramHandle}
+                              </a>
+                            </div>
+                          </div>
+                          <div className="info-tile"><Icons.MapPin size={22} /><div><span className="info-label">Office Address</span><address className="info-address">{CONTACT_INFO.addressLines.map((l) => <span key={l} className="address-line">{l}</span>)}</address></div></div>
+                        </div>
+                        <div className="contact-action-grid">
+                          <a href={CONTACT_INFO.phoneHref} className="btn btn-navy"><Icons.Phone size={18} /><span>CALL NOW</span></a>
+                          <a href={CONTACT_INFO.whatsappHref} target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp"><Icons.WhatsApp size={18} /><span>WHATSAPP</span></a>
+                          <a href={CONTACT_INFO.emailHref} className="btn btn-sky"><Icons.Mail size={18} /><span>EMAIL US</span></a>
+                          <a href={CONTACT_INFO.directionsHref} target="_blank" rel="noopener noreferrer" className="btn btn-gold"><Icons.Nav size={18} /><span>GET DIRECTIONS</span></a>
+                          <a href={CONTACT_INFO.instagramHref} target="_blank" rel="noopener noreferrer" className="btn btn-instagram contact-action-full">
+                            <Icons.Instagram size={18} />
+                            <span>FOLLOW ON INSTAGRAM ({CONTACT_INFO.instagramHandle})</span>
+                          </a>
+                        </div>
+                      </div>
+
+                      <div className="instant-wa-card">
+                        <div className="instant-wa-header"><Icons.WhatsApp size={20} /><span>INSTANT WHATSAPP ENQUIRY</span></div>
+                        <p>Chat with our pilgrimage coordinator directly on WhatsApp for fast quotes and cab confirmation:</p>
+                        <a href={CONTACT_INFO.whatsappHref} target="_blank" rel="noopener noreferrer" className="instant-wa-gold-btn"><Icons.WhatsApp size={18} /><span>WHATSAPP: +91 {CONTACT_INFO.phoneDisplay}</span></a>
+                      </div>
+                    </div>
+                    <EnquiryForm />
+                  </div>
+                </div>
+              </section>
+            </main>
+
+            <footer className="site-footer">
+              <div className="container footer-grid">
+                <div>
+                  <BrandWordmark onClick={(e) => scrollToSection(e, 'home')} />
+                  <p className="footer-about-text">Your Journey, Our Priority – Explore More, Travel Safely and Comfortably! Trusted pilgrimage, Srisailam tour packages, and Hyderabad sightseeing from Hyderabad, Telangana.</p>
+                  <div className="footer-pill-actions">
+                    <a href={CONTACT_INFO.phoneHref} className="pill-btn pill-call"><Icons.Phone size={15} /><span>CALL NOW</span></a>
+                    <a href={CONTACT_INFO.whatsappHref} target="_blank" rel="noopener noreferrer" className="pill-btn pill-whatsapp"><Icons.WhatsApp size={15} /><span>WHATSAPP</span></a>
+                    <a href={CONTACT_INFO.instagramHref} target="_blank" rel="noopener noreferrer" className="pill-btn pill-instagram"><Icons.Instagram size={15} /><span>INSTAGRAM</span></a>
+                  </div>
+                </div>
+                <div className="footer-links-col">
+                  <h4>Quick Links</h4>
+                  <ul>
+                    {NAV_ITEMS.map((item) => (
+                      <li key={item.id}>
+                        <a href={`#${item.id}`} onClick={(e) => scrollToSection(e, item.id)}>{item.label}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="footer-links-col">
+                  <h4>Popular Trips</h4>
+                  <ul>
+                    <li><a href="#srisailam" onClick={(e) => scrollToSection(e, 'srisailam')}>1 Day Srisailam Package</a></li>
+                    <li><a href="#srisailam" onClick={(e) => scrollToSection(e, 'srisailam')}>2 Day Srisailam Package</a></li>
+                    <li><a href="#srisailam" onClick={(e) => scrollToSection(e, 'srisailam')}>20 Sacred Temple Yatras</a></li>
+                    <li><a href="#other-services" onClick={(e) => scrollToSection(e, 'other-services')}>20 Hyderabad Tourist Places</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Contact Details</h4>
+                  <ul className="footer-contact-list">
+                    <li><Icons.Phone size={16} /><a href={CONTACT_INFO.phoneHref}>+91 {CONTACT_INFO.phoneDisplay}</a></li>
+                    <li><Icons.Mail size={16} /><a href={CONTACT_INFO.emailHref}>{CONTACT_INFO.email}</a></li>
+                    <li><Icons.Instagram size={16} /><a href={CONTACT_INFO.instagramHref} target="_blank" rel="noopener noreferrer">Instagram: {CONTACT_INFO.instagramHandle}</a></li>
+                    <li><Icons.MapPin size={16} /><span>{CONTACT_INFO.addressLines.join(' ')}</span></li>
+                  </ul>
+                  <a href={CONTACT_INFO.directionsHref} target="_blank" rel="noopener noreferrer" className="footer-directions-link"><Icons.Nav size={14} /><span>Get Directions on Google Maps</span></a>
+                </div>
+              </div>
+              <div className="footer-bottom">
+                <div className="container footer-bottom-inner">
+                  <p>© {new Date().getFullYear()} Bhargavi Tours &amp; Travels, Hyderabad. All rights reserved.</p>
+                  <p>24/7 Booking Helpline: <a href={CONTACT_INFO.phoneHref}>{CONTACT_INFO.phoneDisplay}</a></p>
+                </div>
+              </div>
+            </footer>
+
+            {/* FLOATING INSTAGRAM, WHATSAPP & CALL BUTTONS */}
+            <div className="floating-cta-stack">
+              <a
+                href={CONTACT_INFO.instagramHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="floating-btn floating-instagram"
+                title="Follow on Instagram"
+              >
+                <Icons.Instagram size={22} /><span className="floating-label">Instagram</span>
+              </a>
+              <a
+                href={CONTACT_INFO.whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="floating-btn floating-whatsapp"
+                title="WhatsApp Us"
+              >
+                <Icons.WhatsApp size={22} /><span className="floating-label">WhatsApp</span>
+              </a>
+              <a
+                href={CONTACT_INFO.phoneHref}
+                className="floating-btn floating-call"
+                title="Call Now: 7893999764"
+              >
+                <Icons.Phone size={21} /><span className="floating-label">Call Now</span>
+              </a>
+            </div>
+          </div>
+        );
+      }
+
+      ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+  </body>
+</html>
